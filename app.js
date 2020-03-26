@@ -31,7 +31,12 @@ app.use("/users", usersRouter);
 app.use(
   "/graphql",
   graphqlHttp({
-    schema: null,
+    schema: graphQl.buildSchema(`
+      schema {
+      query:
+      
+      mutation:
+    }`),
     rootValue: {}
   })
 );
