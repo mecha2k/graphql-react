@@ -1,8 +1,18 @@
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const schema = require("./schema");
+const mongoose = require("mongoose");
 
 const app = express();
+
+const uriDB =
+  "mongodb+srv://mecha2k:1234@graphql-c1gvk.mongodb.net/test?retryWrites=true&w=majority";
+const connectDB = async function () {
+  await mongoose.connect(uriDB, { useUnifiedTopology: true, useNewUrlParser: true });
+  console.log("connected to mongo Database");
+};
+
+const promise = connectDB();
 
 app.use("/graphql", graphqlHTTP({ schema, graphiql: true }));
 
