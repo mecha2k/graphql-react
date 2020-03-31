@@ -2,6 +2,7 @@ const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const schema = require("./schema");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
@@ -14,10 +15,11 @@ const connectDB = async function () {
 
 const promise = connectDB();
 
+app.use(cors());
 app.use("/graphql", graphqlHTTP({ schema, graphiql: true }));
 
-app.listen(3000, () => {
-  console.log("Now, listening on port 3000.");
+app.listen(3200, () => {
+  console.log("Now, listening on port 3200.");
 });
 
 // const path = require("path");
