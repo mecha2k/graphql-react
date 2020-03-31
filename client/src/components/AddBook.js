@@ -14,7 +14,7 @@ class AddBook extends React.Component {
 
   displayAuthors() {
     let data = this.props.data;
-    if (data.loading) return <option>Loading Authors...</option>;
+    if (data.loading) return <option disabled>Loading Authors...</option>;
     else
       return data.authors.map((author) => {
         return (
@@ -46,14 +46,14 @@ class AddBook extends React.Component {
         </div>
         <div className="field">
           <label>Author:</label>
+          {/*<input*/}
+          {/*  type="text"*/}
+          {/*  onChange={(event) => this.setState({ authorid: event.target.value })}*/}
+          {/*/>*/}
           <select>
             <option>Select author</option>
-            {/*{this.displayAuthors()}*/}
+            {this.displayAuthors()}
           </select>
-          <input
-            type="text"
-            onChange={(event) => this.setState({ authorid: event.target.value })}
-          />
         </div>
 
         <button>+</button>
@@ -62,7 +62,9 @@ class AddBook extends React.Component {
   }
 }
 
-export default compose(
-  graphql(getAuthorQuery, { name: "getAuthorQuery" }),
-  graphql(addBookMutation, { name: "addBookMutation" })
-)(AddBook);
+export default graphql(getAuthorQuery)(AddBook);
+
+// export default compose(
+//   graphql(getAuthorQuery, { name: "getAuthorQuery" }),
+//   graphql(addBookMutation, { name: "addBookMutation" })
+// )(AddBook);
