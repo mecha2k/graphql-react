@@ -3,6 +3,10 @@ import { graphql } from "react-apollo";
 import { getBooksQuery } from "../queries";
 
 class BookList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   displayBooks() {
     let data = this.props.data;
     if (data.loading) return <div>Loading books...</div>;
