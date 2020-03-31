@@ -27,15 +27,15 @@ class AddBook extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addBookMutation({
-      variables: { name: this.state.name, genre: this.state.genre, authorid: this.state.authorid },
-      refetchQueries: [{ query: getBooksQuery }],
-    });
+    // this.props.addBookMutation({
+    //   variables: { name: this.state.name, genre: this.state.genre, authorid: this.state.authorid },
+    //   refetchQueries: [{ query: getBooksQuery }],
+    // });
   }
 
   render() {
     return (
-      <form id="add-book" onSubmit={this.handleSubmit}>
+      <form id="add-book">
         <div className="field">
           <label>Book name:</label>
           <input type="text" onChange={(event) => this.setState({ name: event.target.value })} />
@@ -48,7 +48,7 @@ class AddBook extends React.Component {
           <label>Author:</label>
           <select>
             <option>Select author</option>
-            {this.displayAuthors()}
+            {/*{this.displayAuthors()}*/}
           </select>
           <input
             type="text"
